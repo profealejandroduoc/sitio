@@ -22,4 +22,17 @@ class Mascota(models.Model):
     nombre=models.CharField(max_length=50)
     tipo=models.CharField(max_length=50)
     persona = models.ForeignKey(Persona, on_delete=models.PROTECT)
-    
+
+class Carrito(models.Model):
+    id=models.AutoField(primary_key=True)
+    usr=models.CharField(max_length=10)
+    producto=models.CharField(max_length=20)
+    cantidad=models.IntegerField()
+
+class Producto(models.Model):
+    id_prod=models.CharField(primary_key=True,max_length=50)
+    nombre=models.CharField(max_length=50)
+    precio=models.IntegerField()
+
+    def __str__(self):
+        return self.nombre
