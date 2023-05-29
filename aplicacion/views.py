@@ -6,6 +6,16 @@ from .models import Persona
 def index(request):
     return render(request,'aplicacion/index.html')
 
+def personas(request):
+    people=Persona.objects.all()
+    
+    contexto={
+        "personas":people
+    }
+    
+    return render(request,"aplicacion/personas.html",contexto)
+
+#pagina que no sirve para nada
 def informacion(request):
     fecha=date.today()
     autor="El profe"

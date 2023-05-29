@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-GENERO = [
+SEXO = [
         ("F", "Femenino"),
         ("M", "Masculino"),
         ("O", "Otro"),
@@ -12,7 +12,7 @@ class Persona(models.Model):
     nombre=models.CharField(max_length=50)
     apellido=models.CharField(max_length=50)
     f_nacimiento=models.DateField()
-    genero=models.CharField(max_length=1, choices=GENERO)
+    sexo=models.CharField(max_length=1, choices=SEXO)
 
     def __str__(self):
         return f"{self.nombre} {self.apellido}"
