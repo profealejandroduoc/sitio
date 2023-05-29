@@ -3,8 +3,8 @@ from .models import Persona, Mascota, Carrito, Producto
 
 # Register your models here.
 class admPersona(admin.ModelAdmin):
-    list_display=["rut","nombre","apellido","f_nacimiento","genero"]
-    list_editable=["nombre","apellido","f_nacimiento","genero"]
+    list_display=["rut","nombre","apellido","f_nacimiento","sexo"]
+    list_editable=["nombre","apellido","f_nacimiento","sexo"]
 
     class meta:
         model=Persona
