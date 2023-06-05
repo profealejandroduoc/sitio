@@ -20,6 +20,7 @@
                     <th>APELLIDO</th>
                     <th>Fecha Nacimiento</th>
                     <th>SEXO</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -30,7 +31,8 @@
                     <td>{{per.apellido}}</td>
                     <td>{{per.f_nacimiento}}</td>
                     <td>{{per.sexo}}</td>
-                
+                    <td><a href="{% url 'updatepersona' per.rut %}" role="button" class="btn btn-warning text-light">Modificar</a>
+                    <a href="{% url 'eliminarpersona' per.rut %}" role="button" class="btn btn-danger text-light">Eliminar</a> </td>
                 </tr>
                 {% endfor %}
                

@@ -7,4 +7,10 @@ class frmPersona(forms.ModelForm):
         model=Persona
         fields=["rut","nombre","apellido","f_nacimiento","sexo"]
 
+class frmUpdatePersona(forms.ModelForm):
+
+    class Meta:
+        model=Persona
+        fields=["nombre","apellido","f_nacimiento","sexo"]
+        #fields=["nombre","apellido","sexo"]
 
