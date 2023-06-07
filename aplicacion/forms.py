@@ -14,3 +14,8 @@ class frmUpdatePersona(forms.ModelForm):
         fields=["nombre","apellido","f_nacimiento","sexo"]
         #fields=["nombre","apellido","sexo"]
 
+class frmCrearMascota(forms.ModelForm):
+
+    class Meta:
+        model=Mascota
+        fields=["id","nombre","tipo","persona"]
