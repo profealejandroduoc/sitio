@@ -2,13 +2,14 @@ from django.shortcuts import render,get_object_or_404,redirect
 from datetime import date
 from .models import Persona,Mascota
 from .forms import frmPersona, frmUpdatePersona, frmCrearMascota
+from django.contrib.auth.decorators import permission_required, login_required
 
 # Create your views here.
 
 
 def index(request):
     return render(request,'aplicacion/index.html')
-
+@login_required
 def mascotas(request):
     pets=Mascota.objects.all()
 
@@ -17,7 +18,7 @@ def mascotas(request):
     }
 
     return render(request,"aplicacion/mascotas/mascotas.html",contexto)
-
+@login_required
 def crearmascota(request):
     form=frmCrearMascota(request.POST or None)
 
@@ -32,7 +33,7 @@ def crearmascota(request):
             return redirect(to="mascotas")
 
     return render(request,"aplicacion/mascotas/crear.html",contexto)
-
+@login_required
 def updatemascota(request,id):
     mascota=get_object_or_404(Mascota,id=id)
 
@@ -58,7 +59,7 @@ def updatemascota(request,id):
             return redirect(to="mascotas")
 
     return render(request,"aplicacion/mascotas/update.html",contexto)
-
+@login_required
 def deletemascota(request,id):
     mascota=get_object_or_404(Mascota,id=id)
 
@@ -75,6 +76,8 @@ def deletemascota(request,id):
 
     return render(request,"aplicacion/mascotas/delete.html",contexto)
 
+@permission_required('aplicacion.view_persona')
+
 def personas(request):
     people=Persona.objects.all()
     
@@ -85,7 +88,7 @@ def personas(request):
 
  
     return render(request,"aplicacion/personas/personas.html",contexto)
-
+@login_required
 def crearpersona(request):
     form=frmPersona(request.POST or None)
 
@@ -101,7 +104,7 @@ def crearpersona(request):
 
     return render(request,"aplicacion/personas/crearpersona.html",contexto)
 
-
+@login_required
 def updatepersona(request,id):
     persona=get_object_or_404(Persona,rut=id)
 
@@ -127,7 +130,7 @@ def updatepersona(request,id):
             return redirect(to="personas")
 
     return render(request,"aplicacion/personas/update.html",contexto)
-
+@login_required
 def eliminarpersona(request,id):
     persona=get_object_or_404(Persona,rut=id)
 

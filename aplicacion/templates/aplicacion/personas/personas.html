@@ -20,7 +20,9 @@
                     <th>APELLIDO</th>
                     <th>Fecha Nacimiento</th>
                     <th>SEXO</th>
+                    {% if perms.aplicacion.can_change %}
                     <th>Acciones</th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -31,8 +33,10 @@
                     <td>{{per.apellido}}</td>
                     <td>{{per.f_nacimiento}}</td>
                     <td>{{per.sexo}}</td>
+                    {% if perms.aplicacion.can_change %}
                     <td><a href="{% url 'updatepersona' per.rut %}" role="button" class="btn btn-warning text-light">Modificar</a>
                     <a href="{% url 'eliminarpersona' per.rut %}" role="button" class="btn btn-danger text-light">Eliminar</a> </td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
                
