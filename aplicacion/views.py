@@ -4,6 +4,8 @@ from .models import Persona,Mascota
 from .forms import frmPersona, frmUpdatePersona, frmCrearMascota
 
 # Create your views here.
+
+
 def index(request):
     return render(request,'aplicacion/index.html')
 
