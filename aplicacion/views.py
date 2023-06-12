@@ -1,10 +1,25 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from datetime import date
 from .models import Persona,Mascota
-from .forms import frmPersona, frmUpdatePersona, frmCrearMascota
+from django.contrib.auth.models import User
+from .forms import frmPersona, frmUpdatePersona, frmCrearMascota,frmCrearCuenta
 from django.contrib.auth.decorators import permission_required, login_required
 
 # Create your views here.
+def crearcuenta(request):
+    form=frmCrearCuenta()
+    contexto={
+        "form":form
+    }
+
+    if request.method=="POST":
+        form=frmCrearCuenta(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(to="login")
+        
+    return render(request,"registration/crearcuenta.html",contexto)
+
 
 
 def index(request):
